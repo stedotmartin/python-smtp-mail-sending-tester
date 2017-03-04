@@ -3,9 +3,16 @@ smtptest.py: command-line smtp test mail sender
 I use this to programmatically test the security of my email server setups. With this Python app it's easy to script various combinations to SMTP sending options to make sure your email server behaves as you expect, both inside the firewall and out.
 
 
-Usage: python smtptest.py [options] fromaddress toaddress serveraddress 
+Usage: smtptest.py [options] fromaddress toaddress serveraddress
+
 Options:
   -h, --help            show this help message and exit
+  -a ATTACH, --attach=ATTACH
+                        Attach a file, default is None
+  -S, --spam            Use GTUBE code to trigger spam filter positive,
+                        default is false
+  -V, --virus           Use eicar code to trigger virus scanner  positive,
+                        default is false
   -t, --usetls          Connect using TLS, default is false
   -s, --usessl          Connect using SSL, default is false
   -n nnn, --port=nnn    SMTP server port
@@ -15,6 +22,8 @@ Options:
                         SMTP server auth password
   -v, --verbose         Verbose message printing
   -d n, --debuglevel=n  Set to 1 to print smtplib.send messages
+Usage: smtptest.py [options] fromaddress toaddress serveraddress
+
 
 Examples:
 	python smtptest.py bob@example.com mary@example.com mail.example.com
@@ -23,4 +32,3 @@ Examples:
 At verbose == False and debuglevel == 0, smtptest will either succeed silently or print an error. Setting verbose or a debuglevel to 1 will generate intermediate output.
 
 See also http://docs.python.org/library/smtplib.html
-
